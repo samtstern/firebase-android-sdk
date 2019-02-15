@@ -80,3 +80,5 @@ dependencies {
 
     annotationProcessor 'com.google.auto.value:auto-value:1.6'
 }
+
+apply plugin: com.google.firebase.gradle.plugins.ci.device.FirebaseTestLabPlugin
