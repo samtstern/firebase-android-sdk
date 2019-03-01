@@ -44,8 +44,6 @@ public final class FirebaseFirestoreSettings {
   @PublicApi
   public static final class Builder {
 
-    private boolean emulated;
-
     private String host;
     private boolean sslEnabled;
     private boolean persistenceEnabled;
@@ -55,8 +53,6 @@ public final class FirebaseFirestoreSettings {
     /** Constructs a new FirebaseFirestoreSettings Builder object. */
     @PublicApi
     public Builder() {
-      emulated = false;
-
       host = DEFAULT_HOST;
       sslEnabled = true;
       persistenceEnabled = true;
@@ -83,8 +79,6 @@ public final class FirebaseFirestoreSettings {
     @NonNull
     @PublicApi
     public Builder setEmulated(@NonNull String host, int port) {
-      this.emulated = true;
-
       this.setHost(host + ":" + port);
       this.setSslEnabled(false);
       return this;
@@ -191,7 +185,6 @@ public final class FirebaseFirestoreSettings {
     }
   }
 
-  private final boolean emulated;
   private final String host;
   private final boolean sslEnabled;
   private final boolean persistenceEnabled;
@@ -200,7 +193,6 @@ public final class FirebaseFirestoreSettings {
 
   /** Constructs a FirebaseFirestoreSettings object based on the values in the Builder. */
   private FirebaseFirestoreSettings(Builder builder) {
-    emulated = builder.emulated;
     host = builder.host;
     sslEnabled = builder.sslEnabled;
     persistenceEnabled = builder.persistenceEnabled;
@@ -244,12 +236,6 @@ public final class FirebaseFirestoreSettings {
         .add("persistenceEnabled", persistenceEnabled)
         .add("timestampsInSnapshotsEnabled", timestampsInSnapshotsEnabled)
         .toString();
-  }
-
-  // TODO
-  @PublicApi
-  public boolean isEmulated() {
-    return emulated;
   }
 
   /** Returns the host of the Firestore backend. */
